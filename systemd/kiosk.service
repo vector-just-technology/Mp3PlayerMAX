@@ -1,0 +1,29 @@
+[Unit]
+Description=Mp3PlayerMAX Touchscreen Kiosk (Chromium)
+After=graphical.target mp3playermax.service
+Wants=mp3playermax.service
+
+[Service]
+Type=simple
+User=pi
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/pi/.Xauthority
+# Wait for the web server to be ready
+ExecStartPre=/bin/sleep 5
+ExecStart=/usr/bin/chromium-browser \
+    --kiosk \
+    --noerrdialogs \
+    --disable-infobars \
+    --disable-session-crashed-bubble \
+    --disable-restore-session-state \
+    --no-first-run \
+    --disable-features=TranslateUI \
+    --check-for-update-interval=31536000 \
+    --touch-events=enabled \
+    --enable-features=OverlayScrollbar \
+    http://localhost:5000
+Restart=on-failure
+RestartSec=8
+
+[Install]
+WantedBy=graphical.target
