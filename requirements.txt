@@ -1,0 +1,6 @@
+flask>=2.3.0
+flask-socketio>=5.3.0
+eventlet>=0.33.0
+mutagen>=1.47.0
+pillow>=10.0.0
+opencv-python-headless>=4.8.0
