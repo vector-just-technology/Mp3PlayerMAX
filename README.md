@@ -113,6 +113,36 @@ Mp3PlayerMAX/
 
 ---
 
+## Adding Music (SMB Network Share)
+
+After installation, your Pi appears as a network drive on any device on the same WiFi.
+
+**Windows** — open File Explorer and type in the address bar:
+```
+\\<PI_IP>\Music
+```
+
+**Mac** — Finder → Go → Connect to Server:
+```
+smb://<PI_IP>/Music
+```
+
+**Linux:**
+```bash
+nautilus smb://<PI_IP>/Music
+# or mount it:
+sudo mount -t cifs //<PI_IP>/Music /mnt/pimusic -o guest
+```
+
+Just drag and drop your MP3/FLAC/OGG/WAV files in, then tap **↻ Refresh** in the web UI. The shares are open (no password) and auto-start on boot.
+
+To set up SMB separately (if you skipped it):
+```bash
+sudo bash scripts/smb_setup.sh
+```
+
+---
+
 ## Audio Output Switching
 
 Switch between Bluetooth and 3.5mm jack:
