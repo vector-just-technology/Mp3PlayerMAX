@@ -1,0 +1,17 @@
+[Unit]
+Description=Mp3PlayerMAX Web Server
+After=network.target sound.target bluetooth.target
+Wants=bluetooth.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/Mp3PlayerMAX/web
+ExecStart=/home/pi/Mp3PlayerMAX/venv/bin/python app.py
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=multi-user.target
