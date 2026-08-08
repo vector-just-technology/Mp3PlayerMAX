@@ -80,7 +80,10 @@ load-module module-bluetooth-policy
 load-module module-bluetooth-discover
 EOF'
 
-echo "[7/7] Writing app config..."
+echo "[7/8] Setting up SMB network shares..."
+bash "$REPO_DIR/scripts/smb_setup.sh"
+
+echo "[8/8] Writing app config..."
 cat > "$REPO_DIR/config/mp3playermax.conf" <<EOF
 [paths]
 music_dir = /home/pi/Music
